@@ -54,8 +54,7 @@ class _InputScreenState extends State<InputScreen> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         setState(() {
-          _result =
-              "Response: ${data['prediction']}"; 
+          _result = "Response: ${data['prediction']}";
         });
       } else {
         setState(() {
@@ -80,56 +79,58 @@ class _InputScreenState extends State<InputScreen> {
         title: Text('ML App Input UI'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Field 1",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: _field1Controller,
-                decoration: InputDecoration(hintText: 'Enter input 1')),
-            SizedBox(height: 16),
-            Text("Field 2",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: _field2Controller,
-                decoration: InputDecoration(hintText: 'Enter input 2')),
-            SizedBox(height: 16),
-            Text("Field 3",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: _field3Controller,
-                decoration: InputDecoration(hintText: 'Enter input 3')),
-            SizedBox(height: 16),
-            Text("Field 4",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: _field4Controller,
-                decoration: InputDecoration(hintText: 'Enter input 4')),
-            SizedBox(height: 24),
-            Center(
-              child: ElevatedButton(
-                onPressed: _isLoading ? null : _submitData,
-                child: _isLoading
-                    ? CircularProgressIndicator(color: Colors.white)
-                    : Text("Submit"),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Field 1",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: _field1Controller,
+                  decoration: InputDecoration(hintText: 'Enter input 1')),
+              SizedBox(height: 16),
+              Text("Field 2",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: _field2Controller,
+                  decoration: InputDecoration(hintText: 'Enter input 2')),
+              SizedBox(height: 16),
+              Text("Field 3",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: _field3Controller,
+                  decoration: InputDecoration(hintText: 'Enter input 3')),
+              SizedBox(height: 16),
+              Text("Field 4",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: _field4Controller,
+                  decoration: InputDecoration(hintText: 'Enter input 4')),
+              SizedBox(height: 24),
+              Center(
+                child: ElevatedButton(
+                  onPressed: _isLoading ? null : _submitData,
+                  child: _isLoading
+                      ? CircularProgressIndicator(color: Colors.white)
+                      : Text("Submit"),
+                ),
               ),
-            ),
-            SizedBox(height: 24),
-            Text("Result:",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(8)),
-              child: Text(_result, style: TextStyle(fontSize: 16)),
-            ),
-          ],
+              SizedBox(height: 24),
+              Text("Result:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              SizedBox(height: 8),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(8)),
+                child: Text(_result, style: TextStyle(fontSize: 16)),
+              ),
+            ],
+          ),
         ),
       ),
     );
